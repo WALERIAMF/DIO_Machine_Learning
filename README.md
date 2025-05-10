@@ -27,40 +27,59 @@ plt.ylabel('Sales')
 plt.show()
 
 --------------------------------------------
-#Foi criado uma pipeline de teste com os seguintes complementos nessa ordem:
-<h1>Componentes do Azure Machine Learning Studio (Designer)</h1>
-<
-    <div class="component">
-        <h2>1. Parameter</h2>
-        <p>Permite definir valores ajustáveis (parâmetros) que podem ser utilizados em outros componentes do pipeline, como hiperparâmetros de modelos. Exemplo: taxa de aprendizado.</p>
-    </div>
+# Pipeline de Teste - Azure Machine Learning Studio (Designer)
 
-   < <div class="component">
-        <h2>2. Select Columns in Dataset</h2>
-        <p>Usado para selecionar colunas específicas do conjunto de dados, seja para manter ou excluir. Ajuda a focar nas variáveis relevantes para o modelo.</p>
-    </div>
+Foi criada uma pipeline de teste com os seguintes componentes, na ordem:
 
- <   <div class="component">
-        <h2>3. Linear Regression</h2>
-        <p>Modelo estatístico usado para prever valores numéricos com base em variáveis independentes. Este componente define o tipo do modelo a ser treinado.</p>
-    </div>
+## Componentes do Azure Machine Learning Studio (Designer)
 
-  <  <div class="component">
-        <h2>4. Split Data</h2>
-        <p>Divide o conjunto de dados em duas partes, normalmente em dados de treino e teste. Ajuda a validar o desempenho do modelo de forma imparcial.</p>
-    </div>
+### 1. Parameter
+Permite definir valores ajustáveis (parâmetros) que podem ser utilizados em outros componentes do pipeline, como hiperparâmetros de modelos.  
+**Exemplo**: taxa de aprendizado, número de iterações.
 
- <   <div class="component">
-        <h2>5. Train Model</h2>
-        <p>Treina o modelo escolhido (como regressão linear) usando os dados de treino. Requer a especificação da coluna alvo (rótulo) para aprendizado supervisionado.</p>
-    </div>
+---
 
- <   <div class="component">
-        <h2>6. Score Model</h2>
-        <p>Usado para aplicar o modelo treinado a dados de teste e gerar previsões. Permite avaliar como o modelo se comporta em dados não vistos.</p>
-    </div> 
+### 2. Select Columns in Dataset
+Usado para selecionar colunas específicas do conjunto de dados, seja para manter ou excluir.  
+Ajuda a focar nas variáveis relevantes para o modelo e remover informações irrelevantes ou sensíveis.
+
+---
+
+### 3. Linear Regression
+Componente que representa o modelo de regressão linear.  
+Utilizado para prever valores contínuos com base em variáveis independentes.  
+Este componente define o tipo do modelo, mas não o treina sozinho.
+
+---
+
+### 4. Split Data
+Divide o conjunto de dados em duas partes, normalmente:
+- Treinamento (ex: 20%)
+- Teste (ex: 20%)
+
+Essa divisão permite avaliar o desempenho do modelo com dados que ele ainda não viu.
+
+---
+
+### 5. Train Model
+Treina o modelo selecionado (como Regressão Linear) usando os dados de treinamento.  
+É necessário informar qual coluna será prevista (rótulo ou `target`).
+
+---
+
+### 6. Score Model
+Aplica o modelo treinado aos dados de teste para gerar previsões.  
+Permite avaliar se o modelo está generalizando bem.
+
+---
+
+## Modelos com Automated ML
+
+Além da pipeline manual, foram criados **2 experimentos com Automated ML** para treinar modelos automaticamente com base no mesmo conjunto de dados.
+
+O AutoML avalia diversos algoritmos e hiperparâmetros, escolhendo os melhores com base em métricas como MAE, RMSE, R², entre outros.
+
+---
 
 
 
-
-#Foi criado 2 Automateed ML para treinar o modelo
